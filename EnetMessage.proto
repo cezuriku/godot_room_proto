@@ -22,6 +22,29 @@ message ReliableServerMessage {
 
 message JoinGameAccepted {
   int32 id = 1;
+  int32 frame = 2;
+  repeated PlayerStatus players = 3;
+}
+
+// Unreliable Client Message
+
+message UnreliableClientMessage {
+  int32 frame = 1;
+  float x = 2;
+  float y = 3;
+}
+
+// Unreliable Server Message
+
+message UnreliableServerMessage {
+  int32 frame = 1;
+  repeated PlayerStatus players = 2;
+}
+
+// commons
+
+message PlayerStatus {
+  int32 id = 1;
   float x = 2;
   float y = 3;
 }
