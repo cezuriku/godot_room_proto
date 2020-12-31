@@ -29,22 +29,35 @@ message JoinGameAccepted {
 // Unreliable Client Message
 
 message UnreliableClientMessage {
-  int32 frame = 1;
-  float x = 2;
-  float y = 3;
+  uint32 frame = 1;
+  uint32 ack = 2;
+  uint32 player_id = 3;
+  repeated ClientInfo infos = 4;
+}
+
+message ClientInfo {
+  sint32 x = 1;
+  sint32 y = 2;
+
+  bool reset_frame = 15;
 }
 
 // Unreliable Server Message
 
 message UnreliableServerMessage {
-  int32 frame = 1;
-  repeated PlayerStatus players = 2;
+  uint32 frame = 1;
+  uint32 ack = 2;
+  repeated ServerInfo infos = 3;
 }
 
-// commons
+message ServerInfo {
+  repeated PlayerStatus players = 1;
+
+  sint32 delay_frame = 15;
+}
 
 message PlayerStatus {
   int32 id = 1;
-  float x = 2;
-  float y = 3;
+  sint32 x = 2;
+  sint32 y = 3;
 }
