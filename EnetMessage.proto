@@ -31,15 +31,12 @@ message JoinGameAccepted {
 message UnreliableClientMessage {
   uint32 frame = 1;
   uint32 ack = 2;
-  uint32 player_id = 3;
-  repeated ClientInfo infos = 4;
+  repeated ClientInfo infos = 3;
 }
 
 message ClientInfo {
   sint32 x = 1;
   sint32 y = 2;
-
-  bool reset_frame = 15;
 }
 
 // Unreliable Server Message
@@ -52,8 +49,6 @@ message UnreliableServerMessage {
 
 message ServerInfo {
   repeated PlayerStatus players = 1;
-
-  sint32 delay_frame = 15;
 }
 
 message PlayerStatus {
