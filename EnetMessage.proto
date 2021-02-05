@@ -10,6 +10,7 @@ message ReliableClientMessage {
 
 message JoinGame {
   string name = 1;
+  ClientInfo info = 2;
 }
 
 // Reliable Server Message
@@ -49,10 +50,17 @@ message UnreliableServerMessage {
 
 message ServerInfo {
   repeated PlayerStatus players = 1;
+  repeated int32 removedPlayers = 2;
+  repeated NewPlayer addedPlayers = 3;
 }
 
 message PlayerStatus {
   int32 id = 1;
   sint32 x = 2;
   sint32 y = 3;
+}
+
+message NewPlayer {
+  string name = 1;
+  PlayerStatus status = 2;
 }
